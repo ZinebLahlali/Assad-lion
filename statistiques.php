@@ -1,10 +1,3 @@
-<?php 
-   include "./dbconnect.php";
-
-?>
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,35 +6,26 @@
 <title>Zoo Manager Dashboard</title>
 <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-[url('https://i.pinimg.com/1200x/91/77/fc/9177fc397883e3fbe4c5a2e4a67db8d4.jpg')] text-white flex h-screen">
+<body class="bg-gray-900 text-white flex h-screen" >
 
   <!-- Sidebar -->
   <div class="w-64 bg-gray-800 flex flex-col p-4">
-    <h1 class="text-xl font-bold mb-6">ASSAD ZOO</h1>
+    <h1 class="text-xl font-bold mb-6"> ASSAD ZOO</h1>
     <nav class="flex flex-col gap-4">
-     <a href="#"> <button class="nav-btn hover:bg-green-700 px-4 py-2 rounded" >Dashboard</button></a>
+     <a href="/Assad-lion/home.php"> <button class="nav-btn hover:bg-green-700 px-4 py-2 rounded" >Dashboard</button></a>
      <a href="/Assad-lion/users.php"> <button class="nav-btn px-4 py-2 rounded hover:bg-green-700" >utilisateurs</button> </a>
      <a href="/Assad-lion/animals.php"> <button class="nav-btn px-4 py-2 rounded hover:bg-green-700" >Animals</button> </a>
      <a href="/Assad-lion/habitats.php"> <button class="nav-btn px-4 py-2 rounded hover:bg-green-700" >Habitats</button> </a>
-     <a href="/Assad-lion/statistiques.php"> <button class="nav-btn px-4 py-2 rounded hover:bg-green-700" >Statistiques</button> </a>
+     <a href="#"> <button class="nav-btn px-4 py-2 rounded hover:bg-green-700" >Statistiques</button> </a>
      <a href="#"> <button class="nav-btn px-4 py-2 rounded hover:bg-green-700" >Déconnexion</button> </a>
     </nav>
   </div>
 
-  <!-- Main Content -->
-  <div class="flex-1 p-6 overflow-auto">
-    <!-- Dashboard -->
-    <div class="page" id="dashboard">
-      <h2 class="text-2xl font-bold mb-4">Dashboard</h2>
-      <p>Good Morning, Ranger. System systems are optimal. Weather conditions are favorable for all open-air habitats.</p>
-    </div>
-
-
-
-
-  
-
  
+  <div class="flex-1 p-6 overflow-auto">
+   
+
+    
 
   <script src="script.js"></script>
 

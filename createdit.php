@@ -12,12 +12,12 @@
   <div class="w-64 bg-gray-800 flex flex-col p-4">
     <h1 class="text-xl font-bold mb-6"> ASSAD ZOO</h1>
     <nav class="flex flex-col gap-4">
-     <a href="/Assad-lion/home.php"> <button class="nav-btn bg-green-700 px-4 py-2 rounded" data-page="dashboard">Dashboard</button></a>
-     <a href="#"> <button class="nav-btn px-4 py-2 rounded" data-page="dashboard">Create a visite</button></a>
-     <a href="/Assad-lion/reservations.php"> <button class="nav-btn px-4 py-2 rounded hover:bg-gray-700" data-page="reservations">Reservations</button> </a>
-     <a href="/Assad-lion/guide.php"> <button class="nav-btn px-4 py-2 rounded hover:bg-gray-700" data-page="visites">Guided Visits</button> </a>
-     <a href="/Assad-lion/animals.php"> <button class="nav-btn px-4 py-2 rounded hover:bg-gray-700" data-page="animals">Animals</button> </a>
-     <a href="/Assad-lion/habitats.php"> <button class="nav-btn px-4 py-2 rounded hover:bg-gray-700" data-page="habitats">Habitats</button> </a>
+     <a href="/Assad-lion/home.php"> <button class="nav-btn hover:bg-green-700 px-4 py-2 rounded" data-page="dashboard">Dashboard</button></a>
+     <a href="#"> <button class="nav-btn px-4 py-2 rounded hover:bg-green-700">Visite</button></a>
+     <a href="/Assad-lion/reservations.php"> <button class="nav-btn px-4 py-2 rounded hover:bg-green-700">Reservations</button> </a>
+     <a href="/Assad-lion/guide.php"> <button class="nav-btn px-4 py-2 rounded hover:bg-green-700" >Guided Visits</button> </a>
+     <a href="/Assad-lion/animals.php"> <button class="nav-btn px-4 py-2 rounded hover:bg-green-700" >Animals</button> </a>
+     <a href="/Assad-lion/habitats.php"> <button class="nav-btn px-4 py-2 rounded hover:bg-green-700" >Habitats</button> </a>
     </nav>
   </div>
 
@@ -45,9 +45,9 @@
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-      <input type="number" name="duree" placeholder="Durée (min)" 
+      <input type="number" name="duree" placeholder="Durée" 
              class="p-3 border border-green-300 rounded-lg focus:ring-2 focus:ring-green-400 focus:border-green-500" required>
-      <input type="number" name="prix" placeholder="Prix (€)" 
+      <input type="number" name="prix" placeholder="Prix" 
              class="p-3 border border-green-300 rounded-lg focus:ring-2 focus:ring-green-400 focus:border-green-500" required>
       <input type="number" name="capacite_max" placeholder="Capacité max" 
              class="p-3 border border-green-300 rounded-lg focus:ring-2 focus:ring-green-400 focus:border-green-500" required>

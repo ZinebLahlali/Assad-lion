@@ -1,3 +1,39 @@
+<?php
+ include "./dbconnect.php";
+
+
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $nom = $_POST['nom'];
+    $email = $_POST['email'];
+    $role = $_POST['rôle'];
+    $password = $_POST['password'];
+
+    $md5_hash = md5($password);
+
+
+    $sql = $conn->prepare("INSERT INTO utilisateurs (nom, email, rôle, motpasse_hash) VALUES (?, ?, ?, ?)");
+    $sql->bind_param("ssss", $nom, $email, $role, $md5_hash);
+
+    if ($sql->execute()) {
+        echo "Admin créé avec succès";
+    } else {
+        echo "Erreur: " . $sql->error;
+    }
+
+    $sql->close();
+
+ header("location: home.php");
+ exit;
+
+  
+}
+?>
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,16 +70,16 @@
       <h1 class="text-3xl font-bold">Start Your <span class="text-yellow-400">Safari</span></h1>
       <p class="text-gray-300 mt-2">Sign up to explore the CAN 2025 Virtual Zoo.</p>
 
-      <form class="mt-6 space-y-4">
-        <input type="email" placeholder="Email" class="w-full px-4 py-3 rounded-xl bg-white/10 focus:outline-none" />
-        <input type="password" placeholder="Password" class="w-full px-4 py-3 rounded-xl bg-white/10 focus:outline-none" />
-        <input type="password" placeholder="Confirm Password" class="w-full px-4 py-3 rounded-xl bg-white/10 focus:outline-none" />
-        <select class="w-full px-4 py-3 rounded-xl bg-white/10 focus:outline-none">
+      <form class="mt-6 space-y-4" method="post" action="index.php">
+        <input type="name" name="nom"  placeholder="Nom" class="w-full px-4 py-3 rounded-xl bg-white/10 focus:outline-none" />
+        <input type="email" name="email" placeholder="Email" class="w-full px-4 py-3 rounded-xl bg-white/10 focus:outline-none" />
+        <input type="password"  name="password" placeholder="Password" class="w-full px-4 py-3 rounded-xl bg-white/10 focus:outline-none" />
+        <select  name="rôle" class="w-full px-4 py-3 rounded-xl bg-white/10 focus:outline-none">
             <option class="text-black" value="guide">Guide</option>
-            <option  class="text-black" value="visiteur" >Visiteur</option>
+            <option  class="text-black" value="visiteur">Visiteur</option>
         </select>
 
-        <button type="submit" class="w-full py-3 rounded-xl bg-yellow-500 text-black font-bold">Create Account</button>
+        <button type="submit" name="submit" value="submit"    class="w-full py-3 rounded-xl bg-yellow-500 text-black font-bold">Create Account</button>
       </form>
 
       <p class="text-center text-sm text-gray-300 mt-6">
