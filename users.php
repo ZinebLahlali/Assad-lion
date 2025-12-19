@@ -79,29 +79,29 @@ if ($result && mysqli_num_rows($result) > 0) {
                 <a href="activate_user.php?id=
                    class="px-2 py-1 rounded bg-green-50 text-black flex items-center gap-1"
                    title="Activer">
-                   ✅ Activer
+                    Activer
                 </a>
 
                 <!-- Désactiver -->
                 <a href="deactivate_user.php?id= 
                    class="px-2 py-1 rounded bg-yellow-50 text-black flex items-center gap-1"
                    title="Désactiver">
-                   ⚠️ Désactiver
+                    Désactiver
                 </a>
 
                 <!-- Edit -->
                 <a href="edit_user.php?id=
                    class="p-2 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center"
-                   title="Edit">
-                   ✏️
+                   title="Edit">Modifier
+                   
                 </a>
 
                 <!-- Delete -->
                 <a href="delete_user.php?id=
                    onclick="return confirm(\'Are you sure?\')"
                    class="p-2 rounded-full bg-red-50 text-red-600 flex items-center justify-center"
-                   title="Delete">
-                   🗑️
+                   title="Delete"> Supprimer
+                   
                 </a>
 
             </div>

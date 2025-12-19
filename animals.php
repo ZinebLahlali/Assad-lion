@@ -84,8 +84,12 @@ if($result && mysqli_num_rows($result) > 0){
         echo '<p class="text-gray-600 mb-3"><span class="font-semibold">Description:</span> ' . $row['descriptioncourte'] . '</p>';
 
         echo '<div class="flex gap-2">';
-        echo '<a href="edit_animal.php?id=15" class="flex-1 bg-blue-500 hover:bg-blue-600 text-white text-center py-2 rounded-lg transition">Edit</a>';
-        echo '<a href="delete_animal.php?id=14" class="flex-1 bg-red-500 hover:bg-red-600 text-white text-center py-2 rounded-lg transition" onclick="return confirm(\'Are you sure you want to delete this animal?\')">Delete</a>';
+        echo '<a href="edit_animal.php?id='. $row["id_animal"]. '" class="flex-1 bg-blue-500 hover:bg-blue-600 text-white text-center py-2 rounded-lg transition">Edit</a>';
+echo '<a href="delete_animal.php?id=' . $row['id_animal'] . '" 
+class="flex-1 bg-red-500 hover:bg-red-600 text-white text-center py-2 rounded-lg transition" 
+onclick="return confirm(\'Are you sure you want to delete this animal?\')">
+Delete
+</a>';
         echo '</div>';
 
         echo '</div>'; 
@@ -164,6 +168,7 @@ if($result && mysqli_num_rows($result) > 0){
 
     </form>
   </div>
+  
 
 </div>
 
@@ -176,6 +181,13 @@ function openModal() {
 function closeModal() {
   document.getElementById("animalModal").classList.add("hidden");
 }
+ const btnEdit = document.getElementById("btnEdit");
+ const editForm = document.getElementById("editForm");
+ btnEdit.addEventListener('click',() =>{
+  editForm.classList.remove("hidden");
+ })
+
+
 </script>
 
 </body>

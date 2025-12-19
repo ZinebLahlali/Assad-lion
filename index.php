@@ -27,6 +27,17 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
   
 }
+
+$message = "";
+$toastClass = "";
+if($_SERVER["REQUEST_METHOD"] === "POST") {
+  $email = $_POST['email'];
+  $password = $_POST['password'];
+
+  $sql = $conn ->prepare("SELECT motpasse_hash FROM utilisateurs WHERE email= ?");
+}
+
+
 ?>
 
 
@@ -51,8 +62,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
       <p class="text-center text-gray-300 mt-2">Experience the roar of the savanna.</p>
 
       <form class="mt-6 space-y-4">
-        <input type="email" placeholder="Enter your email" class="w-full px-4 py-3 rounded-xl bg-white/10 focus:outline-none" />
-        <input type="password" placeholder="Enter your password" class="w-full px-4 py-3 rounded-xl bg-white/10 focus:outline-none" />
+        <input name="email" type="email" placeholder="Enter your email" class="w-full px-4 py-3 rounded-xl bg-white/10 focus:outline-none" />
+        <input name="password" type="password" placeholder="Enter your password" class="w-full px-4 py-3 rounded-xl bg-white/10 focus:outline-none" />
 
         <button type="submit" class="w-full py-3 rounded-xl bg-yellow-500 text-black font-bold">LOG IN →</button>
       </form>
