@@ -35,6 +35,18 @@ if($_SERVER["REQUEST_METHOD"] === "POST") {
   $password = $_POST['password'];
 
   $sql = $conn ->prepare("SELECT motpasse_hash FROM utilisateurs WHERE email= ?");
+  $sql ->bind_param("s",$email);
+  $sql->execute();
+  $sql->store_result();
+
+  if($sql->num_rows > 0){
+    $sql->bind_result($db_password);
+        $sql->fetch();
+    if ($password === $db_password) {
+            $message = "Login successful";
+            $toastClass = "bg-success";
+
+  }
 }
 
 

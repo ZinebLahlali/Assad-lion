@@ -1,0 +1,68 @@
+ASSAD – Zoo Virtuel
+Description du projet:
+ASSAD est un site web de zoo virtuel créé à l’occasion de la Coupe d’Afrique des Nations 2025 au Maroc.
+Le projet permet de découvrir les animaux africains, leurs habitats, et de participer à des visites guidées virtuelles, avec un focus spécial sur le Lion de l’Atlas.
+
+Objectifs:
+Présenter les animaux et leurs habitats.
+Sensibiliser à la protection des espèces.
+Proposer des visites guidées éducatives.
+Offrir une plateforme simple et sécurisée.
+
+Rôles des utilisateurs:
+Visiteur.
+Consulter les animaux.
+Rechercher et réserver des visites guidées.
+Laisser des commentaires et des notes.
+
+Guide:
+Créer, modifier et supprimer des visites guidées.
+Ajouter les étapes (parcours) d’une visite.
+Consulter les réservations.
+
+ Administrateur:
+Gérer les utilisateurs.
+Gérer les animaux et les habitats (CRUD).
+Consulter des statistiques.
+Le compte administrateur est unique et créé directement dans la base de données.
+
+Fonctionnalités principales:
+Inscription et connexion sécurisées.
+Gestion des rôles (Visiteur, Guide, Admin).
+Liste des animaux avec filtres.
+Fiche spéciale Asaad – Lion de l’Atlas.
+Réservation de visites guidées.
+Commentaires et notes.
+Statistiques générales.
+
+Technologies utilisées:
+Front-End : HTML, CSS, JavaScript.
+Back-End : PHP.
+Base de données : MySQL.
+Sécurité : Hashage des mots de passe.
+Modélisation : UML (cas d’utilisation, ERD).
+
+Base de données (tables principales):
+animaux
+habitats
+utilisateurs
+visitesguidees
+etapesvisite
+reservations
+commentaires
+
+Sécurité:
+Mots de passe hashés
+Validation des données côté serveur
+Contrôle des accès selon le rôle
+
+Installation (simple):
+Cloner le projet
+Importer la base de données MySQL
+Configurer la connexion à la base de données
+Lancer le projet sur un serveur local (XAMPP / WAMP)
+
+Conclusion:
+
+Le projet ASSAD est une plateforme éducative simple qui permet de découvrir la faune africaine à travers un zoo virtuel interactif.
+Il combine apprentissage, technologie et culture dans le cadre de la CAN 2025.
