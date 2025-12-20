@@ -1,7 +1,7 @@
 <?php 
 
 include "./dbconnect.php";
-// if($_SERVER["REQUEST_METHOD"] === "POST"){
+
       $id = $_POST['id_animal'];
       $nom = $_POST['name_edit'];
       $espece = $_POST['species_edit'];
@@ -11,7 +11,6 @@ include "./dbconnect.php";
     //   Id_habitat_edit
       $id_habitatedit = $_POST['Id_habitat_edit'];
       $descriptioncourte = $_POST['description_edit'];
-    //   echo $id, $nom, $espece, $alimentation , $image , $paysorigine , $descriptioncourte ;
 
       $sql ="UPDATE animaux 
       SET nom = ?, `espèce` = ?, alimentation = ?,image = ?,paysorigine = ?,descriptioncourte = ? WHERE id_animal = ?";
@@ -27,6 +26,34 @@ include "./dbconnect.php";
 
         header("Location: animals.php? success=1");
     
-// }
+
+
+
+
+
+//edithabitat-submit
+$id= $_POST["id_habitat"];
+$nom = $_POST["editnom"];
+$climat = $_POST["edittypeClimat"];
+$descreption = $_POST["editdescription"];
+$zonezoo = $_POST["editzoneZoo"];
+$editimage = $_POST["editimage"];
+
+$sql ="UPDATE habitats
+      SET nom = ?, typeclimat = ?, description = ?, zonezoo = ?,image = ? WHERE id_habitat = ?";
+      
+
+        $stmt = mysqli_prepare($conn, $sql);
+        
+        mysqli_stmt_bind_param($stmt, "sssssi", $nom, $climat, $descreption, $zonezoo, $editimage, $id);
+
+        mysqli_stmt_execute($stmt);
+
+        mysqli_stmt_close($stmt);
+
+        header("Location: edithabitat.php? success=1");
+        exit();
+
+
 
 ?>

@@ -1,12 +1,13 @@
 <?php 
    include "./dbconnect.php";
-  $nom = "";
+   $nom = "";
    $typeclimat = "";
    $description = "";
    $zonezoo = "";
    $image = "";
+
    if(isset($_POST['submit'])) {
-     $sql = "INSERT INTO animaux (nom, typeclimat, , image, description,zonezoo)
+     $sql = "INSERT INTO habitats (nom, typeclimat, , image, description,zonezoo)
       VALUES ('$nom','$typeclimat','$image','$description','$zonezoo')";
       if(mysqli_query($conn, $sql)){
         header("Location: habitats.php? success=1");
@@ -72,9 +73,11 @@
             <textarea name="description" placeholder="Description" 
                 class="border rounded px-3 py-2"></textarea>
 
-            <input type="text" name="zoneZoo" placeholder="Zone du zoo" 
+            <input type="text" name="zonezoo" placeholder="Zone du zoo" 
                 value="" 
                 class="border rounded px-3 py-2" />
+                <input type="url" name="image" placeholder="Image URL"
+             class="border rounded-lg px-3 py-2 focus:ring-2 focus:ring-green-500 outline-none">
 
             <div class="flex gap-4 mt-3">
                 <input type="submit" name="submit" value="Submit"
@@ -103,8 +106,8 @@ if($result && mysqli_num_rows($result) > 0){
         echo '<p class="text-gray-600"><span class="font-semibold">Description:</span> ' . $row['description'] . '</p>';
         echo '<p class="text-gray-600"><span class="font-semibold">Zone:</span> ' . $row['zonezoo'] . '</p>';
         echo '<div class="flex gap-2">';
-        echo '<a href="edit_animal.php?id=15" class="flex-1 bg-blue-500 hover:bg-blue-600 text-white text-center py-2 rounded-lg transition">Edit</a>';
-        echo '<a href="delete_animal.php?id=14" class="flex-1 bg-red-500 hover:bg-red-600 text-white text-center py-2 rounded-lg transition" onclick="return confirm(\'Are you sure you want to delete this animal?\')">Delete</a>';
+        echo '<a href="edithabitat.php?id='. $row["id_habitat"]. '" class="flex-1 bg-blue-500 hover:bg-blue-600 text-white text-center py-2 rounded-lg transition">Edit</a>';
+        echo '<a href="deletehabitat.php?id='. $row["id_habitat"]. '" class="flex-1 bg-red-500 hover:bg-red-600 text-white text-center py-2 rounded-lg transition" onclick="return confirm(\'Are you sure you want to delete this animal?\')">Delete</a>';
         echo '</div>';
 
         echo '</div>'; 

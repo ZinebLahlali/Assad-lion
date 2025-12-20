@@ -1,36 +1,31 @@
 <?php
+  session_start();
  include "./dbconnect.php";
 
 
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
+if (isset($_POST['singup_submit'])) {
     $nom = $_POST['nom'];
     $email = $_POST['email'];
     $role = $_POST['rôle'];
     $password = $_POST['password'];
-
     $md5_hash = md5($password);
 
 
     $sql = $conn->prepare("INSERT INTO utilisateurs (nom, email, rôle, motpasse_hash) VALUES (?, ?, ?, ?)");
     $sql->bind_param("ssss", $nom, $email, $role, $md5_hash);
 
-    if ($sql->execute()) {
-        echo "Admin créé avec succès";
-    } else {
-        echo "Erreur: " . $sql->error;
+    if($sql->execute()){
+      $_SESSION['email'] = $email;
+      header("location: home.php");
+    exit();
+    } else{
+      echo "Erreur: " . $sql->error;
     }
-
+    
     $sql->close();
-
- header("location: home.php");
- exit;
-
   
-}
-
-$message = "";
-$toastClass = "";
-if($_SERVER["REQUEST_METHOD"] === "POST") {
+} 
+else if (isset($_POST['loginsubmit'])){
   $email = $_POST['email'];
   $password = $_POST['password'];
 
@@ -39,15 +34,28 @@ if($_SERVER["REQUEST_METHOD"] === "POST") {
   $sql->execute();
   $sql->store_result();
 
-  if($sql->num_rows > 0){
-    $sql->bind_result($db_password);
-        $sql->fetch();
-    if ($password === $db_password) {
-            $message = "Login successful";
-            $toastClass = "bg-success";
 
-  }
+  if($sql->num_rows > 0){
+    $sql->bind_result($motpasse_hash);
+        $sql->fetch();
+
+    if (md5($password)=== $motpasse_hash) {
+            $_SESSION['email'] = $email;
+            header("Location: home.php");
+            exit();
+
+         } else{
+            echo "Mot de passe incorrect";
+         } 
+        } else{
+           echo "Email introuvable";
+         }
+         $sql->close();
+       
 }
+$conn->close();
+
+
 
 
 ?>
@@ -73,11 +81,11 @@ if($_SERVER["REQUEST_METHOD"] === "POST") {
       <h1 class="text-3xl font-bold text-center">Enter the Wild</h1>
       <p class="text-center text-gray-300 mt-2">Experience the roar of the savanna.</p>
 
-      <form class="mt-6 space-y-4">
+      <form class="mt-6 space-y-4" method="POST" action="index.php">
         <input name="email" type="email" placeholder="Enter your email" class="w-full px-4 py-3 rounded-xl bg-white/10 focus:outline-none" />
         <input name="password" type="password" placeholder="Enter your password" class="w-full px-4 py-3 rounded-xl bg-white/10 focus:outline-none" />
 
-        <button type="submit" class="w-full py-3 rounded-xl bg-yellow-500 text-black font-bold">LOG IN →</button>
+        <button type="submit"   name="loginsubmit"  class="w-full py-3 rounded-xl bg-yellow-500 text-black font-bold">LOG IN →</button>
       </form>
 
       <p class="text-center text-sm text-gray-300 mt-6">
@@ -93,7 +101,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST") {
       <h1 class="text-3xl font-bold">Start Your <span class="text-yellow-400">Safari</span></h1>
       <p class="text-gray-300 mt-2">Sign up to explore the CAN 2025 Virtual Zoo.</p>
 
-      <form class="mt-6 space-y-4" method="post" action="index.php">
+      <form class="mt-6 space-y-4" method="POST" action="index.php">
         <input type="name" name="nom"  placeholder="Nom" class="w-full px-4 py-3 rounded-xl bg-white/10 focus:outline-none" />
         <input type="email" name="email" placeholder="Email" class="w-full px-4 py-3 rounded-xl bg-white/10 focus:outline-none" />
         <input type="password"  name="password" placeholder="Password" class="w-full px-4 py-3 rounded-xl bg-white/10 focus:outline-none" />
@@ -102,7 +110,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST") {
             <option  class="text-black" value="visiteur">Visiteur</option>
         </select>
 
-        <button type="submit" name="submit" value="submit"    class="w-full py-3 rounded-xl bg-yellow-500 text-black font-bold">Create Account</button>
+        <button type="submit" name="singup_submit" value="submit"  class="w-full py-3 rounded-xl bg-yellow-500 text-black font-bold">Create Account</button>
       </form>
 
       <p class="text-center text-sm text-gray-300 mt-6">
